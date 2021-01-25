@@ -1,0 +1,105 @@
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    padding : 0 2rem;
+    position: fixed;
+    top : 0;
+    background-color: white;
+    z-index: 1;
+    border-bottom: 1px solid var(--color-main);
+}
+
+.navbar__right{
+    display: flex;
+    align-items: center;
+    height : 100%;
+}
+
+.navbar__right__menu{
+    margin-right: 2rem;
+    position: relative;
+    height : 100%;
+}
+
+.navbar__right__menu__item{
+    height : 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin : 0 0.7rem;
+    transition: all 100ms linear;
+}
+
+/* .navbar__right__menu__item > span {
+    position: relative;
+} */
+
+.navbar__right__menu__item > span:hover{
+    border-bottom: 1px solid var(--color-main);
+}
+
+/* .navbar__right__menu__item > span > span{
+    position: absolute;
+    left : 0;
+    bottom : 0;
+    width : 100%;
+    border : 1px solid var(--color-main);
+    transition: all 30ms linear;
+    transform: translateX(-10px);
+    visibility: hidden;
+} */
+
+.navbar__right__menu__item:hover .navbar__zoom{
+    opacity: 1;
+    visibility: visible;
+    transition: all 300ms linear;
+}
+
+.navbar__zoom{
+    text-align: center;
+    position: absolute;
+    top : 80px;
+    width : 50%;
+    border : 1px solid var(--color-main);
+    background-color: white;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.navbar__zoom#community{
+    width : 70%;
+}
+
+.navbar__zoom> a > li >span{
+    display: inline-block;
+    width : 50%;
+    border-bottom: 1px solid var(--color-lightgray);
+}
+
+.navbar__zoom > a > li:hover span{
+    border-bottom: 1px solid var(--color-main);
+}
+
+.navbar__zoom >a > li{
+    margin : 5px 0;
+}
+
+/* .navbar__right__menu__item:hover{
+    transform: scale(1.05);
+    color: var(--color-main);
+} */
+
+.navbar__right__user4{
+    margin: 0 1.2rem;
+}
+
+.navbar__right__login{
+    margin : 0 0.7rem;
+}
+
+.navbar__right__signup{
+    margin : 0 0.7rem;
+}

@@ -1,0 +1,132 @@
+.teach{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.teach__title{
+    margin : 3rem;
+    font-size: var(--font-pageTitle);
+}
+
+.teach__subjects{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.teach__subject__item{
+    font-size: 22px;
+    font-weight: 300;
+    height: 50px;
+    line-height: 50px;
+    color: #757575;
+    background-color:#eeeeee;
+    width : 350px;
+    border : 1px solid var(--color-lightgray);
+}
+
+.teach__subject__item:hover{
+    color : white;
+    background : var(--color-main);
+}
+
+.teach__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.teach__card{
+    border : 1px solid var(--color-lightgray);
+    width : 250px;
+    height: 300px;
+    margin : 1rem;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.teach__card__subject{
+    margin-left: 2rem;
+    margin-top: 2rem;
+    visibility: visible;
+}
+
+.teach__card__name{
+    margin-left: 2rem;
+    font-size: 25px;
+}
+
+.teach__card__career{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    font-size: 12px;
+    visibility: hidden;
+    transition: all 100ms ease-in;
+    transform: translateY(30px);
+}
+
+.teach__card__avatar{
+    position: absolute;
+    bottom: 3.6rem;
+    right : 1rem;
+    width : 110px;
+    height  :110px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    transition: all 100ms ease-in;
+}
+
+.teach__card__msg{
+    margin-left: 2rem;
+    position: absolute;
+    bottom: 1rem;
+}
+
+.teach__card__effect{
+    position: absolute;
+    bottom : 0;
+    width : 100%;
+    height :30px;
+    background-color: var(--color-main);
+    transition: all 100ms ease-in;
+    transform: translateY(20px);
+    visibility: hidden;
+}
+
+.teach__card__effect:after{
+    box-sizing: content-box;
+    position: absolute;
+    top :-20px;
+    content: '';
+    border-top: 20px solid transparent;
+    border-right: 248px solid var(--color-main);
+}
+
+.teach__card:hover .teach__card__effect{
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.teach__card:hover .teach__card__subject{
+    color: var(--color-main);
+}
+
+.teach__card:hover .teach__card__avatar{
+    z-index: 1;
+    perspective: 1px;
+    transform: perspective(500px) scale(0.7) translate3d(30px, 90px, 0);
+}
+
+.teach__card:hover .teach__card__career{
+    visibility: visible;
+    transform: translateY(0);
+}
+

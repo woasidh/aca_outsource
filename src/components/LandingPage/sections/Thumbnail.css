@@ -1,0 +1,94 @@
+.imgContainer{
+    height: 700px;
+    background-image: url('../../../images/thumbnail.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    opacity: 1;
+    transition: all 500ms linear;
+}
+
+.thumb__popup{
+    position: absolute;
+    height : 100%;
+    width : 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+}
+
+.thumb__popupBox{
+    border : solid 1px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200px;
+    width : 200px;
+    border-radius: 50%;
+    background-color: #00867d;
+    transition: all 500ms linear;
+    opacity: 0;
+    text-align: center;
+}
+
+.thumb__popupBox > span{
+    color: white;
+    font-size: 2rem;
+}
+
+.thumb__popupBox > div{
+    color: white;
+    font-size: 0.8rem;
+}
+
+.thumb__popupBox:nth-child(odd).active{
+    /* transform: translateY(3rem); */
+    transition: all 500ms linear;
+}
+
+.thumb__popupBox:nth-child(odd).active:hover{
+    transition: all 100ms linear;
+    transform: /* translateY(3rem) */ scale(1.1);
+    box-shadow: 3px 3px 10px;
+}
+
+.thumb__popupBox:nth-child(even).active{
+    /* transform: translateY(-3rem); */
+    transition: all 500ms linear;
+}
+
+.thumb__popupBox:nth-child(even).active:hover{
+    transition: all 100ms linear;
+    transform: /* translateY(-3rem) */ scale(1.05);
+    box-shadow: 3px 3px 10px;
+}
+
+.thumb__popupBox.active{
+    transition: all 500ms linear;
+}
+
+.textContainer{
+    position: absolute;
+    right : 3rem;
+    height : 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.thumbnail__title, .thumbnail__desc{
+    color : white;
+}
+
+.thumbnail__title{
+    font-size:2.5rem;
+    opacity : 0;
+    transition: all 1000ms linear;
+}
+
+.thumbnail__desc{
+    margin-top: 0.5rem;
+    opacity : 0;
+    transition: all 1000ms linear;
+}

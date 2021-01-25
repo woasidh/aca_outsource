@@ -1,0 +1,19 @@
+.footer{
+    width : 100%;
+    background-color: #62727b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+    color : var(--color-lightgray);
+    font-size: 14px;
+}
+
+.footer1{
+    margin-bottom: 0.5rem;
+}
+
+.footer1 > span{
+    margin : 0 0.5rem;
+}
