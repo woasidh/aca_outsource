@@ -1,0 +1,4 @@
+.lecture__title{
+    font-size: var(--font-pageTitle);
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,12 @@
+.loginPage{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loginPage > input{
+    display: block;
+}

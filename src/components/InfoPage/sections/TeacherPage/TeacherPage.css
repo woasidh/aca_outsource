@@ -6,7 +6,7 @@
 }
 
 .teach__title{
-    margin : 3rem;
+    margin-bottom : 2rem;
     font-size: var(--font-pageTitle);
 }
 
@@ -15,17 +15,17 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .teach__subject__item{
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 300;
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
     color: #757575;
     background-color:#eeeeee;
-    width : 350px;
+    width : 300px;
     border : 1px solid var(--color-lightgray);
 }
 

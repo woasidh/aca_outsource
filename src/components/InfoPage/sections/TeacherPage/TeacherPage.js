@@ -1,8 +1,8 @@
 import React from 'react'
-import './Teacher.css'
-import avatar from '../../images/avatar.jpg'
+import './TeacherPage.css'
+import avatar from '../../../../images/avatar.jpg'
 
-function Teacher() {
+function TeacherPage() {
     return (
         <div className="teach">
             <div className="teach__title">
@@ -231,4 +231,4 @@ function Teacher() {
     )
 }
 
-export default Teacher
+export default TeacherPage

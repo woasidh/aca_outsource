@@ -7,8 +7,8 @@ import {
 import Navbar from './components/Navbar/Navbar'
 import LandingPage from './components/LandingPage/LandingPage'
 import Footer from './components/Footer/Footer'
-import TeacherPage from './components/TeacherPage/Teacher'
-import CommunityPage from './components/CommunityPage/CommunityPage'
+import InfoPage from './components/InfoPage/InfoPage'
+import Auth from './components/Auth/Auth'
 
 function App() {
   return (
@@ -16,14 +16,11 @@ function App() {
       <Navbar />
       <div className="container">
         <Switch>
-          <Route path='/teacher'>
-            <TeacherPage />
+          <Route path='/info'>
+            <InfoPage />
           </Route>
-          <Route path='/community'>
-            <CommunityPage />
-          </Route>
-          <Route path='/lecture'>
-            <LandingPage />
+          <Route path='/auth'>
+            <Auth />
           </Route>
           <Route path='/'>
             <LandingPage />
