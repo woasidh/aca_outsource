@@ -8,6 +8,7 @@
     /* fontSize */
     --font-pageTitle : 42px;
     --font--large : 30px;
+    --font--leftbarTitle : 25px;
     /* fontWeight */
     --font--bold : 500;
     /* border-radius */
@@ -43,4 +44,9 @@ button{
 
 input{
     border : 1px solid var(--color-darkgray);
+    outline: none;
+}
+
+td{
+    text-align: center;
 }

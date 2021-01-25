@@ -7,7 +7,7 @@ import {
 import Notice from './sections/Notice/Notice'
 import Info from './sections/Info/Info'
 import Video from './sections/Video/Video'
-import LeftNavbar from './sections/LeftNavbar/LeftNavbar'
+import LeftNavbar from '../../components/utils/LeftNavbar/LeftNavbar'
 import './CommunityPage.css'
 
 function CommunityPage() {

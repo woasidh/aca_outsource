@@ -7,6 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .table__counter > span:nth-child(1){
@@ -32,4 +33,27 @@
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     padding-right: 0.5rem;
+}
+
+table{
+    width : 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+tr{
+    height : 40px;
+}
+
+thead > tr{
+    background-color: #e0f2f1;
+    color: black;
+}
+
+th{
+    font-weight: 400;
+}
+
+td{
+    border-bottom: 1px solid var(--color-lightgray);
 }

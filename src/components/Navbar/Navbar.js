@@ -10,7 +10,7 @@ function Navbar() {
             </a>
             <div className="navbar__right">
                 <ul className="navbar__right__menu">
-                    <a href=".">
+                    <a href="/lecture">
                         <li className="navbar__right__menu__item">
                             <span>강의시간표</span>
                             <ul className="navbar__zoom" id = "schedule">

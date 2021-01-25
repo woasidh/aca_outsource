@@ -1,0 +1,82 @@
+.leftNavContainer{
+    display: flex;
+    position: absolute;
+    left : 0;
+    justify-content: center;
+    width : 250px;
+    height :100%;
+    border-right: 1px solid var(--color-lightgray);
+    border-left: 1px solid var(--color-lightgray);
+}
+
+.leftNav{
+    margin-top: 5rem;
+}
+
+.leftBar__titles{
+    box-sizing: content-box;
+    font-size: 20px;
+    color : black;
+}
+
+/* .leftBar__title >li{
+    border-bottom : solid 1px var(--color-lightgray);
+} */
+
+.leftBar__content{
+    color: #607d8b;
+    margin-left: 1rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 15px;
+    display: none;
+    transform : all linear 100ms;
+}
+
+/* .leftBar__content.active{
+    display: block;
+} */
+
+
+
+.leftBar__titles > li > span {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+    width : 150px;
+    border-bottom : 1px solid var(--color-lightgray);
+}
+
+.leftBar__titles > li > span > button{
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    bottom: 9px;
+    display: none;
+}
+
+.leftBar__titles > li > span > button:nth-child(2){
+    display: block;
+}
+
+/* when selected */
+
+.leftBar__title.active{
+    color: var(--color-main);
+}
+
+.leftBar__title.active > span > button:nth-child(1){
+    display: block;
+}
+
+.leftBar__title.active > span > button:nth-child(2){
+    display: none;
+}
+
+.leftBar__title.active > ul {
+    display : block;
+}
+
+/* .leftBar__title.active > ul {
+    display : none;
+} */

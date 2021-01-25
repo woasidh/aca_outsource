@@ -13,21 +13,24 @@ import CommunityPage from './components/CommunityPage/CommunityPage'
 function App() {
   return (
     <Router>
-        <Navbar />
-        <div className="container">
-          <Switch>
-            <Route path='/teacher'>
-              <TeacherPage />
-            </Route>
-            <Route path='/community'>
-              <CommunityPage/>
-            </Route>
-            <Route path='/'>
-              <LandingPage />
-            </Route>
-          </Switch>
-        </div>
-        <Footer />
+      <Navbar />
+      <div className="container">
+        <Switch>
+          <Route path='/teacher'>
+            <TeacherPage />
+          </Route>
+          <Route path='/community'>
+            <CommunityPage />
+          </Route>
+          <Route path='/lecture'>
+            <LandingPage />
+          </Route>
+          <Route path='/'>
+            <LandingPage />
+          </Route>
+        </Switch>
+      </div>
+      <Footer />
     </Router>
   );
 }
