@@ -1,4 +1,4 @@
-.loginPage{
+.loginPage {
     height: 500px;
     display: flex;
     flex-direction: column;
@@ -7,53 +7,53 @@
     text-align: center;
 }
 
-.loginBox{
-    width : 420px;
+.loginBox {
+    width: 420px;
 }
 
-.login__title{
+.login__title {
     font-size: 26px;
     margin-bottom: 1rem;
 }
 
-.loginBox > input{
+.loginBox>input {
     font-size: 17px;
-    margin : auto;
+    margin: auto;
     display: block;
     height: 50px;
-    width : 100%;
+    width: 100%;
     border: none;
-    border-bottom : 1px solid var(--color-lightgray);
+    border-bottom: 1px solid var(--color-lightgray);
     padding-left: 2rem;
 }
 
-.loginBox > input:focus{
-    border-bottom : 1px solid var(--color-main);
+.loginBox>input:focus {
+    border-bottom: 1px solid var(--color-main);
 }
 
-.login__subMenu{
+.login__subMenu {
     display: flex;
     justify-content: right;
 }
 
-.login__help{
-    margin : 1rem;
+.login__help {
+    margin: 1rem;
     display: inline-block;
     margin-left: auto;
     font-size: 13px;
 }
 
-.login__help > a >span{
-    margin : 0 0.4rem;
+.login__help>a>span {
+    margin: 0 0.4rem;
 }
 
-.login__help > a >span:hover{
-    color : var(--color-main);
+.login__help>a>span:hover {
+    color: var(--color-main);
 }
 
-.loginBtn{
-    width:100%;
-    height :62px;
+.loginBtn {
+    width: 100%;
+    height: 62px;
     background-color: var(--color-main);
     color: white;
 }

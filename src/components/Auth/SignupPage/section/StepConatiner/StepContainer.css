@@ -1,0 +1,17 @@
+.signup__stepContainer {
+    margin-bottom: 2rem;
+}
+.signup__stepContainer > div{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-position: center;
+    margin: 0 1.5rem;
+}
+.signup__stepContainer > div.active{
+    background-color: var(--color-lightmain);
+}
+.signup__stepContainer>img{
+    margin-bottom: 3.3rem;
+}
