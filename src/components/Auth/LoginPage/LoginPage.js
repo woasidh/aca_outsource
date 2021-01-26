@@ -24,7 +24,7 @@ function LoginPage() {
                     <div className="login__help">
                         <a href = "/auth/findId"><span>아이디 찾기</span></a>
                         <a href = "/auth/findPwd"><span>비밀번호 찾기</span></a>
-                        <a href = "/auth/signup"><span>회원가입</span></a>
+                        <a href = "/auth/signup/terms"><span>회원가입</span></a>
                     </div>
                 </div>
                 <button className="loginBtn">로그인</button>

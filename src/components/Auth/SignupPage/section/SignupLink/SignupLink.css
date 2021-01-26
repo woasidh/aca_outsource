@@ -1,0 +1,26 @@
+/* linkBtn */
+
+.signup__link {
+    margin-top: 3rem;
+}
+
+.signup__link>button {
+    width: 200px;
+    height: 70px;
+    margin: 0 1rem;
+}
+
+.signup__link>button:nth-child(1) {
+    border: 1px solid var(--color-darkgray);
+}
+
+.signup__link>button:nth-child(2) {
+    width: 200px;
+    height: 70px;
+    background-color: var(--color-main);
+    margin: 0 1rem;
+}
+
+.signup__link>button:nth-child(2)>span {
+    color: white;
+}

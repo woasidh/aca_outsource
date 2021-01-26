@@ -1,0 +1,30 @@
+/* agreeContainer */
+
+.agreeContianer>div {
+    width: 500px;
+    height: 80px;
+    border-bottom: 1px solid var(--color-main);
+    line-height: 80px;
+}
+
+.signup_agreeAll {
+    line-height: 80px;
+}
+
+.signup__terms {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup__person {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup__terms__more>a>span {
+    margin-right: 0.5rem;
+}
+
+.signup__person__more>a>span {
+    margin-right: 0.5rem;
+}

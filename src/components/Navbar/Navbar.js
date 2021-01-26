@@ -49,7 +49,7 @@ function Navbar() {
                 </ul>
                 <div className="navbar__right__user">
                     <a href="/auth/login"><span className="navbar__right__login">로그인</span></a>
-                    <a href="/auth/signup"><span className="navbar__right__signup">회원가입</span></a>
+                    <a href="/auth/signup/terms"><span className="navbar__right__signup">회원가입</span></a>
                 </div>
             </div>
         </div>
