@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './SignupPage.css'
 import {
     BrowserRouter as Router,
@@ -8,6 +8,7 @@ import {
 import StepContainer from './section/StepConatiner/StepContainer'
 import AgreeContainer from './section/AgreeContainer/AgreeContainer'
 import SignupLink from './section/SignupLink/SignupLink'
+import InfoContainer from './section/InfoContainer/InfoContainer'
 
 function SignupPage() {
 
@@ -17,25 +18,31 @@ function SignupPage() {
         setcurrentStep(currentStep + 1);
     }
 
-    const beforeStep = () => {
-        setcurrentStep(currentStep - 1);
-    }
 
     return (
         <Router>
-            <Switch>
-                <div className="signupPage">
-                    <span className="signup__title">회원가입</span>
+            <div className="signupPage">
+                <span className="signup__title">회원가입</span>
+                <Switch>
                     <Route path='/auth/signup/terms'>
-                        <StepContainer currentStep={currentStep} />
+                        <StepContainer currentStep={0} />
                         <AgreeContainer />
-                        <SignupLink nextStep={nextStep} />
+                        <SignupLink currentStep={0}/>
                     </Route>
                     <Route path='/auth/signup/info'>
-                        <StepContainer currentStep={currentStep} />
+                        <StepContainer currentStep={1} />
+                        <InfoContainer />
+                        <SignupLink currentStep = {1} />
                     </Route>
-                </div>
-            </Switch>
+                    <Route path='/auth/signup/complete'>
+                        <StepContainer currentStep={2} />
+                        <div className="signup__completeMsg">
+                            회원가입이 완료되었습니다.
+                        </div>
+                        <SignupLink currentStep = {2} />
+                    </Route>
+                </Switch>
+            </div>
         </Router>
     )
 }

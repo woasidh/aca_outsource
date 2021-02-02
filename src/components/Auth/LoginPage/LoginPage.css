@@ -35,7 +35,6 @@
 .login__subMenu {
     display: flex;
     justify-content: right;
-    transform: translateX(4rem);
     margin-bottom: 1rem;
 }
 

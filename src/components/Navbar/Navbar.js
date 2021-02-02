@@ -24,7 +24,7 @@ function Navbar() {
                     </a>
                     <a href="/info/teacher">
                         <li className="navbar__right__menu__item">
-                            <span>강사진</span>
+                            <span>강사진들</span>
                             <ul className="navbar__zoom" id = "subject">
                                 <a href="/"><li><span>국어</span></li></a>
                                 <a href="/"><li><span>영어</span></li></a>

@@ -19,6 +19,7 @@
 }
 
 .table__intro__search > input{
+    width : 150px;
     height: 35px;
     border-right: 0px;
     padding-left: 0.5rem;
@@ -33,7 +34,7 @@
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     padding-right: 0.5rem;
-}
+} 
 
 table{
     width : 100%;

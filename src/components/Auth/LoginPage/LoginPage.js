@@ -13,13 +13,14 @@ function LoginPage() {
                     placeholder="아이디"
                     id="id"
                     name="id" 
-                    autocomplete="off"
+                    autoComplete="off"
                     />
                 <input
                     type="password"
                     placeholder="비밀번호"
                     id="pwd"
-                    name="pwd" />
+                    name="pwd"
+                    autoComplete="off" />
                 <div className="login__subMenu">
                     <div className="login__help">
                         <a href = "/auth/findId"><span>아이디 찾기</span></a>
