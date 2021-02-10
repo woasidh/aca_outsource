@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+ */
 .navBar{
     display: flex;
     justify-content: space-between;
@@ -19,6 +21,7 @@
 }
 
 .navbar__right__menu{
+    font-family: 'Noto100';
     margin-right: 2rem;
     position: relative;
     height : 100%;
