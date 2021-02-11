@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './StepContainer.css'
 import s1_bold from '../../../../../images/signup1_bold.png'
 import s1_light from '../../../../../images/signup1_light.png'
@@ -16,7 +16,7 @@ function StepContainer(props) {
     const firProc = ()=>{
         let firImg = s1_light;
         let active = "";
-        if(currentStep == 0){
+        if(currentStep === 0){
             firImg = s1_bold;
             active = "active";
         }
@@ -28,7 +28,7 @@ function StepContainer(props) {
     const secProc = ()=>{
         let secImg = s2_light;
         let active = "";
-        if(currentStep == 1){
+        if(currentStep === 1){
             secImg = s2_bold;
             active = "active";
         }
@@ -41,7 +41,7 @@ function StepContainer(props) {
     const thdProc = ()=>{
         let thdImg = s3_light;
         let active = "";
-        if(currentStep == 2){
+        if(currentStep === 2){
             thdImg = s3_bold;
             active = "active";
         }

@@ -4,11 +4,10 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import Notice from './sections/Notice/Notice'
-import Info from './sections/Info/Info'
-import Video from './sections/Video/Video'
 import './CommunityPage.css'
-import Table from '../../../utils/Table/Table'
+import NoticePage from './NoticePage/NoticePage'
+import UnivPage from './UnivPage/UnivPage'
+import VideoPage from './VideoPage/VideoPage'
 
 function CommunityPage() {
 
@@ -21,19 +20,19 @@ function CommunityPage() {
                     <div className="notice__title">
                         공지사항
                     </div>
-                    <Table />
+                    <NoticePage />
                 </Route>
                 <Route path={`${baseUrl}/info`}>
                     <div className="notice__title">
                         입시정보
                     </div>
-                    <Table />
+                    <UnivPage />
                 </Route>
                 <Route path={`${baseUrl}/video`}>
                     <div className="notice__title">
                         모의고사 동영상
                     </div>
-                    <Table />
+                    <VideoPage />
                 </Route>
             </Switch>
         </Router>

@@ -12,7 +12,7 @@ function LoginPage() {
                     type="text"
                     placeholder="아이디"
                     id="id"
-                    name="id" 
+                    name="id"   
                     autoComplete="off"
                     />
                 <input

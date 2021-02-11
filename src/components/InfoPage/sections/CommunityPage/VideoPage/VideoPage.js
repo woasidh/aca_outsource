@@ -1,8 +1,6 @@
 import React from 'react'
-import './Table.css'
 
-function Table() {
-
+function VideoPage() {
     return (
         <div className="table">
             <div className="table__intro">
@@ -114,4 +112,4 @@ function Table() {
     )
 }
 
-export default Table
+export default VideoPage

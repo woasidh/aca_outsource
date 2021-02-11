@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './SignupPage.css'
 import {
     BrowserRouter as Router,
@@ -11,13 +11,6 @@ import SignupLink from './section/SignupLink/SignupLink'
 import InfoContainer from './section/InfoContainer/InfoContainer'
 
 function SignupPage() {
-
-    const [currentStep, setcurrentStep] = useState(0);
-
-    const nextStep = () => {
-        setcurrentStep(currentStep + 1);
-    }
-
 
     return (
         <Router>
