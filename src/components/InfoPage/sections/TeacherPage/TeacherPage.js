@@ -206,7 +206,7 @@ function TeacherPage() {
             </ul> : <></>}
             <ul className="teach__container">
                 {genCards()}
-                {/* <li className="teach__card">
+                {/* <li style = {{opacity : '0'}}className="teach__card">
                     <div className="teach__card__subject">
                         과학탐구영역
                     </div>

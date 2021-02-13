@@ -27,6 +27,10 @@
     width : 300px;
     border : 1px solid var(--color-lightgray);
 }
+.teach__subject__item:hover{
+    color : white;
+    background : var(--color-main);
+}
 .teach__subject__item.active{
     color : white;
     background : var(--color-main);
@@ -47,6 +51,10 @@
     background-color:#eeeeee;
     width : 120px;
     border : 1px solid var(--color-lightgray);
+}
+.teach__subsubject__item:hover{
+    color : white;
+    background : var(--color-main);
 }
 .teach__subsubject__item.active{
     color : white;

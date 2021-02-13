@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import '../../../../utils/Table/Table.css'
 
 function NoticePage() {
 

@@ -2,3 +2,28 @@
     font-size: var(--font-pageTitle);
     margin-bottom: 2rem;
 }
+
+.lecture__grades{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.lecture_grade{
+    font-size: 13px;
+    font-weight: 300;
+    height: 26px;
+    line-height: 26px;
+    color: #757575;
+    background-color:#eeeeee;
+    width : 120px;
+    border : 1px solid var(--color-lightgray);
+}
+.lecture_grade:hover{
+    color : white;
+    background : var(--color-main);
+}
+.lecture_grade.active{
+    color : white;
+    background : var(--color-main);
+}
