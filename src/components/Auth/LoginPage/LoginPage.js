@@ -1,7 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './LoginPage.css'
+import axios from 'axios'
+import Cookies from 'js-cookie';
+
 
 function LoginPage() {
+
+    function loginBtn(){
+        
+        const idElm = document.querySelector('input#id');
+        const pwdElm = document.querySelector('input#pwd');
+
+        const payload = {
+            id : idElm.value,
+            pwd : pwdElm.value
+        }
+
+        /* axios.post('http://localhost:5000/auth/login', payload).then(response=>{
+            console.log(response);
+            console.log(Cookies.get('ab'));
+        }) */
+
+        axios.get('ec2-13-125-234-233.ap-northeast-2.compute.amazonaws.com:3000').then(response=>{
+            console.log(response);
+        })
+    }
+
     return (
         <div className="loginPage">
             <div className="loginBox">
@@ -28,7 +52,7 @@ function LoginPage() {
                         <a href = "/auth/signup/terms"><span>회원가입</span></a>
                     </div>
                 </div>
-                <button className="loginBtn">로그인</button>
+                <button onClick = {loginBtn} className="loginBtn">로그인</button>
             </div>
         </div>
     )
