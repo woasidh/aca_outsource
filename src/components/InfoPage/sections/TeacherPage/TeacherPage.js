@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './TeacherPage.css'
-import avatar from '../../../../images/avatar.jpg'
 import axios from 'axios'
-import ads from '../../../../images/kakao.jpg'
+
 
 function TeacherPage() {
 

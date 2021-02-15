@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import LoginPage from './LoginPage/LoginPage'
 import SignupPage from './SignupPage/SignupPage'
+import AdminPage from './AdminPage/AdminPage'
 
 function Auth() {
     return (
@@ -16,6 +17,9 @@ function Auth() {
                 </Route>
                 <Route path='/auth/signup'>
                     <SignupPage />
+                </Route>
+                <Route path='/auth/admin'>
+                    <AdminPage />
                 </Route>
             </Switch>
         </Router>
