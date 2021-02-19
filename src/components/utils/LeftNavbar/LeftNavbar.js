@@ -20,45 +20,45 @@ function LeftNavbar() {
         <div className="leftNavContainer">
             <div className="leftNav">
                 <ul className="leftBar__titles">
-                    <li className = "leftBar__title" id = "class">
+                    <li key = '1' className = "leftBar__title" id = "class">
                         <span>
                             강의시간표
                             <button onClick = {toggleHandler}><i className="fas fa-chevron-up"></i></button>
                             <button onClick = {toggleHandler}><i className="fas fa-chevron-down"></i></button>
                         </span>
                         <ul className="leftBar__content">
-                            <li>고1</li>
-                            <li>고2</li>
-                            <li>고3</li>
-                            <li>중3</li>
-                            <li>특강</li>
+                            <li key = '1'>고1</li>
+                            <li key = '2'>고2</li>
+                            <li key = '3'>고3</li>
+                            <li key = '4'>중3</li>
+                            <li key = '5'>특강</li>
                         </ul>
                     </li>
-                    <li className = "leftBar__title" id = "teach">
+                    <li key = '2' className = "leftBar__title" id = "teach">
                         <span>
                             강사진
                             <button onClick = {toggleHandler}><i className="fas fa-chevron-up"></i></button>
                             <button onClick = {toggleHandler}><i className="fas fa-chevron-down"></i></button>
                         </span>
                         <ul className="leftBar__content">
-                            <li>국어</li>
-                            <li>영어</li>
-                            <li>수학</li>
-                            <li>과학</li>
-                            <li>사회</li>
-                            <li>논술</li>
+                            <li key = '1'>국어</li>
+                            <li key = '2'>영어</li>
+                            <li key = '3'>수학</li>
+                            <li key = '4'>과학</li>
+                            <li key = '5'>사회</li>
+                            <li key = '6'>논술</li>
                         </ul>
                     </li>
-                    <li className = "leftBar__title active" id = "community">
+                    <li key = '3' className = "leftBar__title active" id = "community">
                         <span>
                             커뮤니티
                             <button onClick = {toggleHandler}><i className="fas fa-chevron-up"></i></button>
                             <button onClick = {toggleHandler}><i className="fas fa-chevron-down"></i></button>
                         </span>
                         <ul className="leftBar__content">
-                            <li>공지사항</li>
-                            <li>입시정보</li>
-                            <li>모의고사 동영상</li>
+                            <li key = '1'>공지사항</li>
+                            <li key = '2'>입시정보</li>
+                            <li key = '3'>모의고사 동영상</li>
                         </ul>
                     </li>
                 </ul>

@@ -1,0 +1,72 @@
+.noticeCnt__main{
+    font-family: "Noto400";
+    font-size: 30px;
+}
+
+.noticeCnt__titleBar{
+    margin-top: 1rem;
+    width : 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid var(--color-lightgray);
+    padding : 13px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.noticeCnt__author{
+    margin-top: 10px;
+    color : var(--color-darkgray);
+    font-size: 15px;
+}
+
+.noticeCnt__content{
+    min-height: 500px;
+}
+
+.noticeCnt__listBox{
+    width :max-content;
+    margin-left: auto;
+    width : 80px;
+    height : 35px;
+    border : 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.noticeCnt__listBox > div >i{
+    font-size: 15px;
+}
+
+.noticeCnt__listBox > div >span{
+    font-size: 15px;
+}
+
+.noticeCnt__Box{
+    width : 100%;
+    border-top: 1px solid var(--color-lightgray);
+    border-bottom: 1px solid var(--color-lightgray);
+    padding : 10px 0;
+    display: flex;
+}
+
+.noticeCnt__Box#next{
+    border-top: none;
+}
+
+.noticeCnt__Box__left{
+    flex-basis: 8%;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.noticeCnt__Box__left > i{
+    margin-right: 5px;
+}
+
+.noticeCnt__Box__right{
+    margin-left: 30px;
+    display: inline-block;
+}

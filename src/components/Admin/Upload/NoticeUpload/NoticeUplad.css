@@ -1,0 +1,19 @@
+.upload__title{
+    padding : 2rem 0;
+}
+
+input.upload__input{
+    width : 600px;
+    border : none;
+    border-bottom: 1px solid black;
+    color : var(--color-main);
+    font-size: 25px;
+}
+
+.upload__submitBtn{
+    background-color: var(--color-main);
+    width : 130px;
+    height : 40px;
+    color : white;
+    border-radius:  10px;
+}

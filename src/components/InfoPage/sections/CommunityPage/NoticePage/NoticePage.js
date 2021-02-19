@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../../../../utils/Table/Table.css'
+import Cookies from 'universal-cookie';
+import './NoticePage.css'
+
+const cookie = new Cookies();
 
 function NoticePage() {
 
+    const [isAdmin, setisAdmin] = useState(false);
     const [currentPage, setcurrentPage] = useState(1);
     const [contentCount, setcontentCount] = useState(0);
     const [contents, setcontents] = useState([]);
     const [Pcontents, setPcontents] = useState([]);
     const [searchCount, setsearchCount] = useState(10);
-    const [nonPriorityCount, setnonPriorityCount] = useState(0)
+    const [nonPriorityCount, setnonPriorityCount] = useState(0);
+    const [refresh, setrefresh] = useState(0);
 
     useEffect(() => {
 
@@ -19,12 +25,26 @@ function NoticePage() {
                 console.log('axios comm success');
                 const total = response.data.result.length + response.data.resultP.length;
                 setcontentCount(total);
-                setsearchCount(10-response.data.resultP.length);
+                setsearchCount(10 - response.data.resultP.length);
                 setnonPriorityCount(response.data.result.length)
                 setcontents(response.data.result.reverse());
                 setPcontents(response.data.resultP.reverse());
             } else {
                 console.log('axios comm fail!');
+            }
+        })
+
+
+        axios.post('http://localhost:3001/auth/isAdmin', { token: cookie.get('kth_tk') }).then(response => {
+            if (response.data.success === true) {
+                if (response.data.isAdmin === true) {
+                    setisAdmin(true);
+                } else {
+                    setisAdmin(false);
+                }
+            } else {
+                window.location.href = '/'
+                alert('에러 발생')
             }
         })
 
@@ -36,19 +56,57 @@ function NoticePage() {
             content && resultCode.push(
                 <tr>
                     <td>공지</td>
-                    <td>{content.title}</td>
+                    <td style ={{position : 'relative'}}>
+                        <a href={'/info/community/notice/content?id=' + content.noticeId}>
+                            {content.title}
+                        </a>
+                        {isAdmin && <><a href = {'/admin/modify/notice?id='+content.noticeId} className = "changeBtn" style = {{position : 'absolute', right : '0'}}>
+                            수정
+                        </a>
+                        <button onClick = {()=>{
+                            axios.delete(`http://localhost:3001/notice/content/${content.noticeId}`).then(res=>{
+                                if(res.data.success === false){
+                                    alert('오률발생');
+                                }else{
+                                    alert('삭제가 완료되었습니다.');
+                                    window.location.href = '/info/community/notice';
+                                }
+                            })
+                        }} className = "_deleteBtn" style = {{position : 'absolute', right : '55px'}}>
+                            삭제
+                        </button></>}
+                    </td>
                     <td>{content.author}</td>
                     <td>{content.genDate.split('T')[0]}</td>
                     <td>{content.counter}</td>
                 </tr>
             );
         })
-        let j =0;
+        let j = 0;
         for (let i = searchCount * (currentPage - 1); i < searchCount * (currentPage); i++) {
             contents[i] && resultCode.push(
                 <tr>
-                    <td>{nonPriorityCount-((currentPage-1)*searchCount)-j}</td>
-                    <td>{contents[i].title}</td>
+                    <td>{nonPriorityCount - ((currentPage - 1) * searchCount) - j}</td>
+                    <td style ={{position : 'relative'}}>
+                        <a href={'/info/community/notice/content?id=' + contents[i].noticeId}>
+                            {contents[i].title}
+                        </a>
+                        {isAdmin && <><a href = {'/admin/modify/notice?id='+contents[i].noticeId} className = "changeBtn" style = {{position : 'absolute', right : '0'}}>
+                            수정
+                        </a>
+                        <button onClick = {()=>{
+                            axios.delete(`http://localhost:3001/notice/content/${contents[i].noticeId}`).then(res=>{
+                                if(res.data.success === false){
+                                    alert('오률발생');
+                                }else{
+                                    alert('삭제가 완료되었습니다.');
+                                    window.location.href = '/info/community/notice';
+                                }
+                            })
+                        }} className = "_deleteBtn" style = {{position : 'absolute', right : '55px'}}>
+                            삭제
+                        </button></>}
+                    </td>
                     <td>{contents[i].author}</td>
                     <td>{contents[i].genDate.split('T')[0]}</td>
                     <td>{contents[i].counter}</td>
@@ -62,17 +120,17 @@ function NoticePage() {
     }
 
     function genPageSelector() {
-        const total = parseInt((nonPriorityCount-1)/searchCount);
+        const total = parseInt((nonPriorityCount - 1) / searchCount);
         let resultCode = [];
-        for(let i =1;i<total+2;i++){
-            if(i===currentPage){
-                resultCode.push(<button onClick = {()=>{
+        for (let i = 1; i < total + 2; i++) {
+            if (i === currentPage) {
+                resultCode.push(<button onClick={() => {
                     setcurrentPage(i);
-                }}><li key = {i} className="pageSelector__number active">{i}</li></button>);
-            }else{
-                resultCode.push(<button onClick = {()=>{
+                }}><li key={i} className="pageSelector__number active">{i}</li></button>);
+            } else {
+                resultCode.push(<button onClick={() => {
                     setcurrentPage(i);
-                }}><li key = {i} className="pageSelector__number">{i}</li></button>);
+                }}><li key={i} className="pageSelector__number">{i}</li></button>);
             }
         }
         return (
@@ -85,13 +143,14 @@ function NoticePage() {
             <div className="table">
                 <div className="table__intro">
                     <div className="table__counter">
-                        <p className="table__counter">
+                        <p style={{ display: 'inline-block' }} className="table__counter">
                             Total
                         <span> {nonPriorityCount}건</span>
                         ,
                         <span> {currentPage} </span>
                         page
                         </p>
+                        {isAdmin && <a className="notice__uploadBtn" href="/admin/upload/notice">업로드</a>}
                     </div>
                     <div className="table__intro__search">
                         <input type="text" placeholder="검색어를 입력해 주세요" id="search" name="name" />
@@ -124,7 +183,7 @@ function NoticePage() {
                 <button><div className="pageDirector"><i className="fas fa-angle-double-left"></i></div></button>
                 {currentPage !== 1 ? <button><div className="pageDirector"><i className="fas fa-angle-left"></i></div></button> : <></>}
                 {genPageSelector()}
-                {currentPage === parseInt((nonPriorityCount-1)/searchCount)-1 ? <button><div className="pageDirector"><i className="fas fa-angle-right"></i></div></button> : <></>}
+                {currentPage === parseInt((nonPriorityCount - 1) / searchCount) - 1 ? <button><div className="pageDirector"><i className="fas fa-angle-right"></i></div></button> : <></>}
                 <button><div className="pageDirector"><i className="fas fa-angle-double-right"></i></div></button>
             </ul>
         </>

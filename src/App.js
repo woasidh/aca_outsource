@@ -9,6 +9,7 @@ import LandingPage from './components/LandingPage/LandingPage'
 import Footer from './components/Footer/Footer'
 import InfoPage from './components/InfoPage/InfoPage'
 import Auth from './components/Auth/Auth'
+import Admin from './components/Admin/Admin'
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
       <Navbar />
       <div className="container">
         <Switch>
+          <Route path='/admin'>
+            <Admin />
+          </Route>
           <Route path='/info'>
             <InfoPage />
           </Route>

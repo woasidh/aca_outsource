@@ -146,12 +146,12 @@ function TeacherPage() {
             const careerArr = teacher.career.split('@@@');
             const careerCode = careerArr.map((career) => {
                 return (
-                    <li>- {career}</li>
+                    <li key = {index}>- {career}</li>
                 );
             })
             console.log(careerArr);
             return (
-                <li className="teach__card">
+                <li key = '1' className="teach__card">
                     <div className="teach__card__subject">
                         {korean}영역
                     </div>
@@ -205,27 +205,6 @@ function TeacherPage() {
             </ul> : <></>}
             <ul className="teach__container">
                 {genCards()}
-                {/* <li style = {{opacity : '0'}}className="teach__card">
-                    <div className="teach__card__subject">
-                        과학탐구영역
-                    </div>
-                    <div className="teach__card__name">
-                        김태호 선생님
-                    </div>
-                    <ul className="teach__card__career">
-                        <li>- 서울대 물리학과 졸업</li>
-                        <li>- 현) 김태호학원 원장</li>
-                    </ul>
-                    <div
-                        style={{ backgroundImage: `url(${avatar})` }}
-                        className="teach__card__avatar">
-
-                    </div>
-                    <div className="teach__card__msg">
-                        프로필 보기
-                    </div>
-                    <div className="teach__card__effect"></div>
-                </li> */}
             </ul>
         </div>
     )

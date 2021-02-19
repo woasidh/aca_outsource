@@ -8,6 +8,8 @@ import './CommunityPage.css'
 import NoticePage from './NoticePage/NoticePage'
 import UnivPage from './UnivPage/UnivPage'
 import VideoPage from './VideoPage/VideoPage'
+import NoticeContent from './NoticeContent/NoticeContent'
+import NoticeModify from './NoticeModify/NoticeContent'
 
 function CommunityPage() {
 
@@ -16,6 +18,12 @@ function CommunityPage() {
     return (
         <Router>
             <Switch>
+                <Route path={`${baseUrl}/notice/content/modify`}>
+                    <NoticeModify />
+                </Route>
+                <Route path={`${baseUrl}/notice/content`}>
+                    <NoticeContent />
+                </Route>
                 <Route path={`${baseUrl}/notice`}>
                     <div className="notice__title">
                         공지사항
