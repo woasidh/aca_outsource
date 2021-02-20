@@ -27,7 +27,7 @@ const MyBlock = styled.div`
 `;
 
 
-function NoticeUpload() {
+function UnivInofModify() {
 
     const url = 'http://localhost:3001/';
     //HTML string -> draft
@@ -54,14 +54,15 @@ function NoticeUpload() {
 
     useEffect(() => {
         const id = window.location.search.split('=')[1];
-        axios.get(`http://localhost:3001/notice/content?id=${id}`).then(res => {
+        axios.get(`http://localhost:3001/univInfo/content?id=${id}`).then(res => {
+            console.log(res.data);
             if (res.data.success === false) {
                 alert('오류 발생');
                 window.location.href = '/'
             } else {
                 console.log(res.data);
                 setcontent(res.data);
-                const blocksFromHtml = htmlToDraft(res.data.content);
+                const blocksFromHtml = htmlToDraft((res.data.content ? res.data.content : ""));
                 const { contentBlocks, entityMap } = blocksFromHtml;
                 const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
                 setEditorState(EditorState.createWithContent(contentState))
@@ -69,10 +70,12 @@ function NoticeUpload() {
                 inputElm.value = res.data.title;
                 console.log(typeof(res.data.priority));
                 if(res.data.priority === 1){
+                    console.log('원래 1');
                     const checkboxElm = document.querySelector('input[type=checkbox]');
                     checkboxElm.checked = true;
-                    setisChecked(true)
+                    setisChecked(false);
                 }else{
+                    console.log('원래 0');
                     const checkboxElm = document.querySelector('input[type=checkbox]');
                     checkboxElm.checked = false;
                     setisChecked(false);
@@ -147,9 +150,14 @@ function NoticeUpload() {
                     onEditorStateChange={onEditorStateChange}
                 />
             </MyBlock>
-            <Checkbox
+        <button onClick = {
+            ()=>{
+                console.log(isChecked);
+            }
+        }>click me!!!!!!!!!!!!!!</button>
+            <Checkbox id = "ischecked"
                 /* defaultChecked={(content.priority === 1) ? true : false} */
-                defaultChecked = {true}
+                defaultChecked = {isChecked}
                 onChange={(e) => {
                     if (e.target.checked)
                         setisChecked(true)
@@ -176,29 +184,14 @@ function NoticeUpload() {
                             content: content
                         }
                         console.log(payload);
-                        axios.patch(`http://localhost:3001/notice/content`, payload).then(res => {
+                        axios.patch(`http://localhost:3001/univInfo/content`, payload).then(res => {
                             if(res.data.success === false){
                                 alert('오류 발생')
                                 window.location.href = '/'
                             }else{
                                 alert('수정완료되었습니다');
-                                window.location.href = '/info/community/notice'
+                                window.location.href = '/info/community/univInfo'
                             }
-                            /* if (!res.data.success) {
-                                alert('세션이 만료되었습니다. 로그인을 다시해주세요');
-                                window.location.href = '/auth/login'
-                            } else {
-                                const payload = {
-                                    priority: priority,
-                                    title: inputElm.value,
-                                    author: res.data.id,
-                                    content: content
-                                }
-                                console.log(payload);
-                                axios.post('http://localhost:3001/notice/content', payload).then(res => {
-                                    console.log(res.data);
-                                })
-                            } */
                         })
                     }}>업데이트</button>
             </div>
@@ -206,4 +199,4 @@ function NoticeUpload() {
     )
 }
 
-export default NoticeUpload
+export default UnivInofModify

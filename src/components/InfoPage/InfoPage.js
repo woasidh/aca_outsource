@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -8,6 +8,7 @@ import CommunityPage from './sections/CommunityPage/CommunityPage'
 import LecturePage from './sections/LecturePage/Lecturepage'
 import TeacherPage from './sections/TeacherPage/TeacherPage'
 import LeftNavbar from '../utils/LeftNavbar/LeftNavbar'
+import ScheduleContent from './sections/LecturePage/ScheduleContent/index'
 import './InfoPage.css'
 
 function InfoPage() {
@@ -20,7 +21,10 @@ function InfoPage() {
             <Router>
                 <div className="infoContainer">
                     <Switch>
-                        <Route path={`${baseUrl}/lecture`}>
+                        <Route path={`${baseUrl}/schedule/content`}>
+                            <ScheduleContent/>
+                        </Route>
+                        <Route path={`${baseUrl}/schedule`}>
                             <LecturePage />
                         </Route>
                         <Route path={`${baseUrl}/teacher`}>

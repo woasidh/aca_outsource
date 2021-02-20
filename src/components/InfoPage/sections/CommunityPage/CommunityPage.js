@@ -9,7 +9,8 @@ import NoticePage from './NoticePage/NoticePage'
 import UnivPage from './UnivPage/UnivPage'
 import VideoPage from './VideoPage/VideoPage'
 import NoticeContent from './NoticeContent/NoticeContent'
-import NoticeModify from './NoticeModify/NoticeContent'
+import VideoContent from './VideoContent/VideoContent'
+import UnivContent from './UnivContent/UnivContent'
 
 function CommunityPage() {
 
@@ -18,9 +19,6 @@ function CommunityPage() {
     return (
         <Router>
             <Switch>
-                <Route path={`${baseUrl}/notice/content/modify`}>
-                    <NoticeModify />
-                </Route>
                 <Route path={`${baseUrl}/notice/content`}>
                     <NoticeContent />
                 </Route>
@@ -30,11 +28,17 @@ function CommunityPage() {
                     </div>
                     <NoticePage />
                 </Route>
-                <Route path={`${baseUrl}/info`}>
+                <Route path={`${baseUrl}/univInfo/content`}>
+                    <UnivContent />
+                </Route>
+                <Route path={`${baseUrl}/univInfo`}>
                     <div className="notice__title">
                         입시정보
                     </div>
                     <UnivPage />
+                </Route>
+                <Route path={`${baseUrl}/video/content`}>
+                    <VideoContent />
                 </Route>
                 <Route path={`${baseUrl}/video`}>
                     <div className="notice__title">

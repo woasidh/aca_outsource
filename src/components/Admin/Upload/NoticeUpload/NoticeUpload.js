@@ -41,8 +41,8 @@ function NoticeUpload() {
 
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState);
-        /* console.log(draftToHtml(convertToRaw(editorState.getCurrentContent()))); */
-        /* setcontentLength(draftToHtml(convertToRaw(editorState.getCurrentContent())).length); */
+        console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+        setcontentLength(draftToHtml(convertToRaw(editorState.getCurrentContent())).length);
     };
 
     function onImgChange(e) {

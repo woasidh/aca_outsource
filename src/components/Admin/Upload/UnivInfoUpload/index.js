@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
@@ -27,23 +27,15 @@ const MyBlock = styled.div`
 `;
 
 
-function NoticeUpload() {
+function UnivInfoUpload() {
 
     const url = 'http://localhost:3001/';
-    //HTML string -> draft
-    const data = "<p><strong>안녕</strong></p><p>안녕안녕</p><p><strong>안녕안녕안녕.</strong></p>"
-    const blocksFromHtml = htmlToDraft(data);
-    const { contentBlocks, entityMap } = blocksFromHtml;
-    const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
-
 
     const [contentLength, setcontentLength] = useState(0);
     const [isChecked, setisChecked] = useState(false);
     const [counter, setcounter] = useState(0);
     const [Images, setImages] = useState([]);
-    const [editorState, setEditorState] = useState(EditorState.createWithContent(contentState));
-    const [content, setcontent] = useState({});
-    const [id, setid] = useState(0)
+    const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
 
     const onEditorStateChange = (editorState) => {
@@ -51,35 +43,6 @@ function NoticeUpload() {
         console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
         setcontentLength(draftToHtml(convertToRaw(editorState.getCurrentContent())).length);
     };
-
-    useEffect(() => {
-        const id = window.location.search.split('=')[1];
-        axios.get(`http://localhost:3001/notice/content?id=${id}`).then(res => {
-            if (res.data.success === false) {
-                alert('오류 발생');
-                window.location.href = '/'
-            } else {
-                console.log(res.data);
-                setcontent(res.data);
-                const blocksFromHtml = htmlToDraft(res.data.content);
-                const { contentBlocks, entityMap } = blocksFromHtml;
-                const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap);
-                setEditorState(EditorState.createWithContent(contentState))
-                let inputElm = document.querySelector('input.upload__input');
-                inputElm.value = res.data.title;
-                console.log(typeof(res.data.priority));
-                if(res.data.priority === 1){
-                    const checkboxElm = document.querySelector('input[type=checkbox]');
-                    checkboxElm.checked = true;
-                    setisChecked(true)
-                }else{
-                    const checkboxElm = document.querySelector('input[type=checkbox]');
-                    checkboxElm.checked = false;
-                    setisChecked(false);
-                }
-            }
-        })
-    }, [])
 
     function onImgChange(e) {
         const image = e[e.length - 1]
@@ -101,7 +64,7 @@ function NoticeUpload() {
         <div style={{ width: '900px', margin: 'auto' }}>
             <div className="upload__title">
                 <span>제목</span>
-                <input className="upload__input" style={{ marginLeft: '10px' }} /* placeholder={content.title}  */ type="text" id="title" name="title" required />
+                <input className="upload__input" style={{ marginLeft: '10px' }} type="text" id="title" name="title" required />
             </div>
             <Files style={{
                 marginBottom: '20px'
@@ -148,8 +111,6 @@ function NoticeUpload() {
                 />
             </MyBlock>
             <Checkbox
-                /* defaultChecked={(content.priority === 1) ? true : false} */
-                defaultChecked = {true}
                 onChange={(e) => {
                     if (e.target.checked)
                         setisChecked(true)
@@ -168,42 +129,29 @@ function NoticeUpload() {
                         let content = draftToHtml(convertToRaw(editorState.getCurrentContent()));
                         console.log(content);
                         content = content.replace(/\n/g, '');
-                        const id = window.location.search.split('=')[1];
-                        const payload = {
-                            id : parseInt(id),
-                            priority: priority,
-                            title: inputElm.value,
-                            content: content
-                        }
-                        console.log(payload);
-                        axios.patch(`http://localhost:3001/notice/content`, payload).then(res => {
-                            if(res.data.success === false){
-                                alert('오류 발생')
-                                window.location.href = '/'
-                            }else{
-                                alert('수정완료되었습니다');
-                                window.location.href = '/info/community/notice'
-                            }
-                            /* if (!res.data.success) {
+                        console.log(content);
+                        /* console.log(content[10].charCodeAt(0)) */
+                        axios.get(`http://localhost:3001/auth/getId/?tk=${cookie.get('kth_tk')}`).then(res => {
+                            if (!res.data.success) {
                                 alert('세션이 만료되었습니다. 로그인을 다시해주세요');
                                 window.location.href = '/auth/login'
                             } else {
                                 const payload = {
                                     priority: priority,
                                     title: inputElm.value,
-                                    author: res.data.id,
-                                    content: content
+                                    author : res.data.id,
+                                    content : content
                                 }
                                 console.log(payload);
-                                axios.post('http://localhost:3001/notice/content', payload).then(res => {
+                                axios.post('http://localhost:3001/univInfo/content', payload).then(res=>{
                                     console.log(res.data);
                                 })
-                            } */
+                            }
                         })
-                    }}>업데이트</button>
+                    }}>업로드</button>
             </div>
         </div>
     )
 }
 
-export default NoticeUpload
+export default UnivInfoUpload

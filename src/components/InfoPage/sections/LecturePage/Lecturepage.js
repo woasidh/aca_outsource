@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './Lecturepage.css'
+import Cookies from 'universal-cookie';
+
+const cookie = new Cookies();
 
 function LecturePage() {
 
+    const [isAdmin, setisAdmin] = useState(false);
     const [currentPage, setcurrentPage] = useState(1);
     const [contentCount, setcontentCount] = useState(0);
     const [contents, setcontents] = useState([]);
@@ -16,6 +20,7 @@ function LecturePage() {
         console.log(gradeNum);
         axios.get(`http://localhost:3001/schedule/contents/${gradeNum}`).then(response => {
             if (response.data.success === true) {
+                /* console.log(response.data); */
                 console.log('axios comm success');
                 const total = response.data.result.length + response.data.resultP.length;
                 setcontentCount(total);
@@ -31,6 +36,21 @@ function LecturePage() {
     }
 
     useEffect(() => {
+
+        console.log('sex')
+
+        axios.post('http://localhost:3001/auth/isAdmin', { token: cookie.get('kth_tk') }).then(response => {
+            if (response.data.success === true) {
+                if (response.data.isAdmin === true) {
+                    setisAdmin(true);
+                } else {
+                    setisAdmin(false);
+                }
+            } else {
+                window.location.href = '/'
+                alert('에러 발생')
+            }
+        })
 
         switch (grade) {
             case 1:
@@ -60,7 +80,26 @@ function LecturePage() {
             content && resultCode.push(
                 <tr>
                     <td>공지</td>
-                    <td>{content.title}</td>
+                    <td style ={{position : 'relative'}}>
+                        <a href={'/info/schedule/content?id=' + content.scheduleId}>
+                            {content.title}
+                        </a>
+                        {isAdmin && <><a href = {'/admin/modify/schedule?id='+content.scheduleId} className = "changeBtn" style = {{position : 'absolute', right : '0'}}>
+                            수정
+                        </a>
+                        <button onClick = {()=>{
+                            axios.delete(`http://localhost:3001/schedule/content/${content.scheduleId}`).then(res=>{
+                                if(res.data.success === false){
+                                    alert('오률발생');
+                                }else{
+                                    alert('삭제가 완료되었습니다.');
+                                    window.location.href = '/info/schedule';
+                                }
+                            })
+                        }} className = "_deleteBtn" style = {{position : 'absolute', right : '55px'}}>
+                            삭제
+                        </button></>}
+                    </td>
                     <td>{content.author}</td>
                     <td>{content.genDate.split('T')[0]}</td>
                     <td>{content.counter}</td>
@@ -72,7 +111,26 @@ function LecturePage() {
             contents[i] && resultCode.push(
                 <tr>
                     <td>{nonPriorityCount - ((currentPage - 1) * searchCount) - j}</td>
-                    <td>{contents[i].title}</td>
+                    <td style ={{position : 'relative'}}>
+                        <a href={'/info/schedule/content?id=' + contents[i].scheduleId}>
+                            {contents[i].title}
+                        </a>
+                        {isAdmin && <><a href = {'/admin/modify/schedule?id='+contents[i].scheduleId} className = "changeBtn" style = {{position : 'absolute', right : '0'}}>
+                            수정
+                        </a>
+                        <button onClick = {()=>{
+                            axios.delete(`http://localhost:3001/schedule/content/${grade}/${contents[i].scheduleId}`).then(res=>{
+                                if(res.data.success === false){
+                                    alert('오률발생');
+                                }else{
+                                    alert('삭제가 완료되었습니다.');
+                                    window.location.href = '/info/schedule';
+                                }
+                            })
+                        }} className = "_deleteBtn" style = {{position : 'absolute', right : '55px'}}>
+                            삭제
+                        </button></>}
+                    </td>
                     <td>{contents[i].author}</td>
                     <td>{contents[i].genDate.split('T')[0]}</td>
                     <td>{contents[i].counter}</td>
@@ -123,13 +181,14 @@ function LecturePage() {
             <div className="table">
                 <div className="table__intro">
                     <div className="table__counter">
-                        <p className="table__counter">
+                    <p style={{ display: 'inline-block' }} className="table__counter">
                             Total
                         <span> {nonPriorityCount}건</span>
                         ,
                         <span> {currentPage} </span>
                         page
                         </p>
+                        {isAdmin && <a className="notice__uploadBtn" href={'/admin/upload/schedule?grade='+grade}>업로드</a>}
                     </div>
                     <div className="table__intro__search">
                         <input type="text" placeholder="검색어를 입력해 주세요" id="search" name="name" />

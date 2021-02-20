@@ -26,12 +26,6 @@ function Navbar() {
                     <>
                         <a href="/auth/myPage"><span className="navbar__right__login">내정보</span></a>
                         <button onClick={onLogoutBtn} style={{ font: 'inherit' }}><span className="navbar__right__signup">로그아웃</span></button>
-                        <a style={{
-                            backgroundColor: '#4f9a94',
-                            height: '40px',
-                            padding: '0.3rem',
-                            color: 'white'
-                        }} href="/auth/admin"><span className="navbar__right__signup">게시글관리</span></a>
                     </>
                 );
             } else {
@@ -65,15 +59,15 @@ function Navbar() {
             </a>
             <div className="navbar__right">
                 <ul className="navbar__right__menu">
-                    <a href="/info/lecture/grade1">
+                    <a href="/info/schedule/grade1">
                         <li key = '1' className="navbar__right__menu__item">
                             <span>강의시간표</span>
                             <ul className="navbar__zoom" id="schedule">
-                                <a href="/info/lecture/grade1"><li key = "1"><span>고1</span></li></a>
-                                <a href="/info/lecture/grade2"><li key = "2"><span>고2</span></li></a>
-                                <a href="/info/lecture/grade3"><li key = "3"><span>고3</span></li></a>
-                                <a href="/info/lecture/grade4"><li key = "4"><span>중3</span></li></a>
-                                <a href="/info/lecture/special"><li key = "5"><span>특강</span></li></a>
+                                <a href="/info/schedule/grade1"><li key = "1"><span>고1</span></li></a>
+                                <a href="/info/schedule/grade2"><li key = "2"><span>고2</span></li></a>
+                                <a href="/info/schedule/grade3"><li key = "3"><span>고3</span></li></a>
+                                <a href="/info/schedule/grade4"><li key = "4"><span>중3</span></li></a>
+                                <a href="/info/schedule/special"><li key = "5"><span>특강</span></li></a>
                             </ul>
                         </li>
                     </a>
@@ -95,7 +89,7 @@ function Navbar() {
                             <span>커뮤니티</span>
                             <ul className="navbar__zoom" id="community">
                                 <a href="/info/community/notice"><li key = '1'><span>공지사항</span></li></a>
-                                <a href="/info/community/info"><li key = '2'><span>입시정보</span></li></a>
+                                <a href="/info/community/univInfo"><li key = '2'><span>입시정보</span></li></a>
                                 <a href="/info/community/video"><li key = '3'><span>모의고사 동영상</span></li></a>
                             </ul>
                         </li>
