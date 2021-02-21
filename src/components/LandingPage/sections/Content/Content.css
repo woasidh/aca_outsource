@@ -117,3 +117,7 @@
 .row2__howToCome__desc{
     margin-top: 1rem;
 }
+
+li.slide{
+    z-index: 100;
+}

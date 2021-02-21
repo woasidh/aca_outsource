@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Content.css'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -10,6 +10,58 @@ import location from '../../../../images/location.jpg'
 import kakaoIcon from '../../../../images/kakao.png'
 
 function Content() {
+
+
+    const [level, setlevel] = useState(1);
+
+    function r1() {
+        console.log('r1');
+        const btn = document.querySelector('button.control-next');
+        btn.click();
+        setlevel(2);
+    }
+
+    function l2() {
+        console.log('l2');
+        const btn = document.querySelector('button.control-prev');
+        btn.click();
+        setlevel(1);
+    }
+
+    function r2() {
+        console.log('r2');
+        const btn = document.querySelector('button.control-next');
+        btn.click();
+        setlevel(3);
+    }
+
+    function l3() {
+        console.log('l3');
+        const btn = document.querySelector('button.control-prev');
+        btn.click();
+        setlevel(4);
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            switch (level) {
+                case 1:
+                    r1();
+                    break;
+                case 2:
+                    r2();
+                    break;
+                case 3:
+                    l3();
+                    break;
+                case 4:
+                    l2();
+                    break;
+                default:
+                    break;
+            }
+        }, 3000);
+    }, [level])
 
     const getNoticeContent = () => {
 
@@ -28,18 +80,18 @@ function Content() {
             <div className="content__row1">
                 <div className="row1__program">
                     <div className="row__title" id="program">
-                        프로그램
+                        프로그램{level}
                     </div>
                     <div className="carousel">
                         <Carousel>
                             <div>
-                                <img src={carouselImg1} alt = "1"/>
+                                <img src={carouselImg1} alt="1" />
                             </div>
                             <div>
-                                <img src={carouselImg2} alt = "2" />
+                                <img src={carouselImg2} alt="2" />
                             </div>
                             <div>
-                                <img src={carouselImg3} alt = "3" />
+                                <img src={carouselImg3} alt="3" />
                             </div>
                         </Carousel>
                     </div>
@@ -56,36 +108,24 @@ function Content() {
                 </div>
             </div>
             <div className="content__row2">
-                <div className="row2__contact">{/* 
-                    <div className="row__title" id="contact">
-                        연락처
-                    </div> */}
+                <div className="row2__contact">
                     <div className="row2__contact__content">
                         <img src={kakaoImg} alt="kakao" className="row2__contact__kakao" />
                         <div className="row2__contact__desc">
                             <div className="row2__contact__title">Contact us</div>
-                            <div className="row2__contact__item" id = "email">
+                            <div className="row2__contact__item" id="email">
                                 <i className="far fa-envelope"></i>
                                 <span>kthac@naver.com</span>
                             </div>
-                            <div className="row2__contact__item" id = "phone">
+                            <div className="row2__contact__item" id="phone">
                                 <i className="fas fa-phone-alt"></i>
                                 <span>02-563-3123</span>
                             </div>
-                            <div className="row2__contact__item" id = "kakao">
-                                <img src={kakaoIcon} alt="KAKAOICON"/>
+                            <div className="row2__contact__item" id="kakao">
+                                <img src={kakaoIcon} alt="KAKAOICON" />
                                 <span>Kakao ID.김태호학원</span>
                             </div>
                         </div>
-                        {/*                         <div className="row2__contact__phoneNum">
-                            02-563-3123
-                        </div>
-                        <div className="row2__contact__desc">
-                            AM 09:00 ~ PM 18:00<br/>Kakao ID. 김태호과학학원
-                        </div>
-                        <div className="row2__contact__kakao">
-
-                        </div> */}
                     </div>
                 </div>
                 <div className="row2__howToCome">
